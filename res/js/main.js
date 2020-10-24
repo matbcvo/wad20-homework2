@@ -10,6 +10,20 @@ $(function () {
         }
     });
 
+    $('#my_avatar').click(function() {
+        $('#avatar-dropdown-content').toggle();
+    })
+
+    getUserInformation(1)
+        .then(function (response) {
+            console.log(response);
+            $('#userinfo').text(response.firstname + " " + response.lastname + " " + response.email);
+            $('#my_avatar').attr('src', response.avatar);
+        })
+        .catch(function() {
+            alert('Error loading user information')
+        });
+
     loadPosts()
         .then(function (response) {
             console.log(response);
@@ -73,6 +87,18 @@ $(function () {
             alert('Error loading posts')
         });
 });
+
+function getUserInformation(userid) {
+    return $.get({
+        url: 'https://private-anon-34009587ac-wad20postit.apiary-mock.com/users/' + userid,
+        success: function (response) {
+            return response;
+        },
+        error: function () {
+            alert('error');
+        }
+    });
+}
 
 function loadPosts() {
     return $.get({

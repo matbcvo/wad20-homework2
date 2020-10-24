@@ -75,13 +75,13 @@ nav {
     align-items: center;
 }
 
-nav div {
+nav > div {
     height: 30px;
     flex-grow: 4;
     padding: 10px;
 }
 
-nav div img {
+nav > div.logo-container img {
     height: 100%;
     width: 30px;
     margin-left: 15px;
@@ -90,7 +90,7 @@ nav div img {
     object-position: top center;
 }
 
-nav div.search-container > input {
+nav > div.search-container > input {
     box-sizing: border-box;
     height: 30px;
     width: 80%;
@@ -99,7 +99,7 @@ nav div.search-container > input {
     border: 1px solid #e0e0e0;
 }
 
-nav div.search-container > button {
+nav > div.search-container > button {
     height: 30px;
     width: 20%;
     margin: 0;
@@ -108,9 +108,44 @@ nav div.search-container > button {
     border-bottom-left-radius: 0;
 }
 
-nav div.avatar-container {
+nav > div.avatar-container {
     margin-right: 15px;
+    padding: 0;
     text-align: right;
+}
+
+nav > div.avatar-container img.avatar {
+    width: 30px;
+    overflow: hidden;
+    clip-path: circle(15px at 15px 15px);
+}
+
+#avatar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#avatar-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    background-color: #fff;
+    min-width: 160px;
+    z-index: 1;
+    right: 0;
+}
+
+#avatar-dropdown-content > * {
+    padding: .5em .5em;
+    display: block;
+    text-align: left;
+}
+#avatar-dropdown-content > *:not(:first-child) {
+    border-top: 1px solid #ddd;
+}
+
+#avatar-dropdown-content > a:hover {
+    background-color: #eee;
 }
 
 .main-container {
